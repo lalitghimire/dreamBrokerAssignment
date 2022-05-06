@@ -1,6 +1,7 @@
+import 'dotenv/config';
 import express from 'express';
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
@@ -9,10 +10,10 @@ app.get('/', (req, res) => {
 });
 
 app.post('/analyze', (req, res) => {
-    let inputText = req.body.text;
-    let totalLength = inputText.length;
-    let lengthWithoutSpace = inputText.replace(/ /g, '').length;
-    let wordCount = inputText.match(/(\w+)/g).length;
+    const inputText = req.body.text;
+    const totalLength = inputText.length;
+    const lengthWithoutSpace = inputText.replace(/ /g, '').length;
+    const wordCount = inputText.match(/(\w+)/g).length;
     console.log(inputText);
     console.log(totalLength);
     console.log(lengthWithoutSpace);
@@ -27,10 +28,15 @@ app.post('/analyze', (req, res) => {
                 return total;
             }, {});
     };
-    let out = counter(inputText);
+    const out = counter(inputText);
     const ordered = Object.fromEntries(Object.entries(out).sort());
-    let result = Object.keys(ordered).map((key) => ({ [key]: ordered[key] }));
-    res.send(result);
+    const result = Object.keys(ordered).map((key) => ({ [key]: ordered[key] }));
+    const responseObject = {
+        textLength: { withSpaces: totalLength, withoutSpaces: lengthWithoutSpace },
+        wordCount: wordCount,
+        characterCount: result,
+    };
+    res.send(responseObject);
 });
 
 // listen to the server
