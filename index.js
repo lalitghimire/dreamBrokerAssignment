@@ -28,7 +28,7 @@ app.post('/analyze', (req, res) => {
                 return total;
             }, {});
     };
-    const out = counter(inputText);
+    const out = counter(inputText.toLowerCase());
     const ordered = Object.fromEntries(Object.entries(out).sort());
     const result = Object.keys(ordered).map((key) => ({ [key]: ordered[key] }));
     const responseObject = {
