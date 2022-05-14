@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Assignment task from Dream Broker</title>
+        <link rel="stylesheet" href="index.css" />
+    </head>
+    <body>
+        <h1>Solution to the assignment task from Dream Broker</h1>
+        <h2>The task</h2>
+        <p>
+            Implement an endpoint to analyze text. Curl command to call your API might look like
+            this: <br />
+            <code>
+                `curl --header "Content-Type: application/json" <br />
+                --request POST --data '{"text":"your text "}' <br />
+                https://mysuperawesomeapi.com/analyze`</code
+            >
+            <br />
+        </p>
+        <p>
+            And the response should be: <br />
+            <code>
+                { "textLength":{"withSpaces":15,"withoutSpaces":11}, <br />
+                "wordCount":3,<br />
+                "characterCount":[{"e":2},{"h":1},{"i":1},{"l":2},{"m":1},{"o":1},{"s":1},{"t":1}] }
+            </code>
+        </p>
+        <p>
+            The details of the assignment task can be found from this link:
+            <a href="https://challenge.dreambroker.jobs/245768c7-b82f-4a77-abbc-d1214acf7163"
+            >here</a>
+            <h2>My implementation</h2>
+        </p>
+        <p>To test my implementation, send request in the format as mentioned above to <code>https://dbrcodetask.herokuapp.com/analyze</code> </p>
+    </body>
+</html>

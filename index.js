@@ -1,10 +1,12 @@
 import 'dotenv/config';
 import express from 'express';
 const app = express();
-
+import path from 'path';
+const __dirname = path.resolve();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/analyze', (req, res) => {
     const inputText = req.body.text;
